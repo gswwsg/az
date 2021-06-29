@@ -1,0 +1,19 @@
+az keyvault set-policy --name <YourKeyVaultName> --upn user@domain.com --secret-permissions delete get list set
+
+
+Install-Module -Name Az -Scope CurrentUser -Repository PSGallery -Force
+Connect-AzAccount -Subscription "CC_Sandbox_Enterprise Dev/Test"
+
+Get-Module -ListAvailable -Name Microsoft.PowerApps.Administration.PowerShell
+Install-Module -Name Microsoft.PowerApps.PowerShell -AllowClobber
+Get-Module -ListAvailable -Name Az -Scope CurrentUser -Repository PSGallery -Force
+
+Set-AzKeyVaultAccessPolicy -VaultName "PowerPlatformAdmin" -UserPrincipalName "powerappsflow@chemours.com" -PermissionsToSecrets get,set,delete
+*************************************************
+azure devops cli
+
+az extension add --name azure-devops
+az extension list
+az devops configure --defaults organization=https://dev.azure.com/CCPowerPlatformDevOps project="Pro Makers Projects"
+$
+az repos create --name testEnvRepo
